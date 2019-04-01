@@ -45,31 +45,8 @@ namespace ExampleCommon
             // - The colors, represented as R, G, B in 1-byte each were converted to
             //   float using (value - Mean)/Scale.
 
-            const int W = 224;
-            const int H = 224;
-            const float Mean = 117;
-            const float Scale = 1;
 
             var graph = new TFGraph();
-            input = graph.Placeholder(TFDataType.String);
-
-            output = graph.Cast(graph.Div(
-                x: graph.Sub(
-                    x: graph.ResizeBilinear(
-                        images: graph.ExpandDims(
-                            input: graph.Cast(
-                                graph.DecodeJpeg(contents: input, channels: 3), DstT: TFDataType.Float),
-                            dim: graph.Const(0, "make_batch")),
-                        size: graph.Const(new int[] { W, H }, "size")),
-                    y: graph.Const(Mean, "mean")),
-                y: graph.Const(Scale, "scale")), destinationDataType);
-
-            return graph;
-
-
-            ////////////////////////////////////////////////////////////////////////////////////////////
-            /*
-             var graph = new TFGraph();
             input = graph.Placeholder(TFDataType.String);
 
             output = graph.Cast(
@@ -81,8 +58,6 @@ namespace ExampleCommon
                     );
 
             return graph;
-            */
-            ////////////////////////////////////////////////////////////////////////////////////////////
 
             //const int W = 227;
             //const int H = 227;

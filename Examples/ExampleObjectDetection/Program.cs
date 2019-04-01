@@ -100,8 +100,8 @@ namespace ExampleObjectDetection
 		{
 			string defaultModelUrl = ConfigurationManager.AppSettings["DefaultModelUrl"] ?? throw new ConfigurationErrorsException("'DefaultModelUrl' setting is missing in the configuration file");
 
-			var modelFile = Path.Combine (dir, "faster_rcnn_inception_resnet_v2_atrous_coco_11_06_2017/frozen_inference_graph.pb");
-			var zipfile = Path.Combine (dir, "faster_rcnn_inception_resnet_v2_atrous_coco_11_06_2017.tar.gz");
+			var modelFile = Path.Combine (dir, "ssdlite_mobilenet_v2_coco_2018_05_09/frozen_inference_graph.pb");
+			var zipfile = Path.Combine (dir, "ssdlite_mobilenet_v2_coco_2018_05_09.tar.gz");
 
 			if (File.Exists (modelFile))
 				return modelFile;
